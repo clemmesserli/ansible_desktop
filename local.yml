@@ -7,9 +7,12 @@
     - name: Install desired base packages.
       package:
         name:
+          - dconf-cli
           - htop
+          - python3-psutil
           - tmux
           - vim-nox
+      state: present
 
     - name: Copy wallpaper file.
       copy:
