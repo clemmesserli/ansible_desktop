@@ -1,0 +1,7 @@
+---
+- name: install cron job (git_poller)
+  cron:
+    name: "git_poller"
+    user: ansible
+    minute: "*/10"
+    job: "/usr/bin/ansible-pull -o -U https://github.com/clemmesserli/ansible_desktop.git > /dev/null"

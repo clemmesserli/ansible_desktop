@@ -34,23 +34,3 @@
     dest: /home/cmesserli/.bashrc
     owner: cmesserli
     group: cmesserli
-
-- name: add ansible user.
-  user:
-    name: velociraptor
-    system: yes
-
-- name: set up sudo for ansible user.
-  copy:
-    src: files/sudoer_velociraptor
-    dest: /etc/sudoers.d/velociraptor
-    owner: root
-    group: root
-    mode: 0440
-
-- name: add ansible-pull cron job
-  cron:
-    name: ansible auto-provision
-    user: velociraptor
-    minute: "*/10"
-    job: ansible-pull -o -U https://github.com/clemmesserli/ansible_desktop.git
